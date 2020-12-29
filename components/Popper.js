@@ -23,7 +23,7 @@ function MoviePopper({
   loading,
   error,
   anchorEl,
-  maxedOut,
+  nominatedIds,
   handleNominate,
 }) {
   const classes = useStyles();
@@ -46,7 +46,7 @@ function MoviePopper({
               ) : movies.length > 0 ? (
                 movies.map(movie => (
                   <MovieRow
-                    maxedOut={maxedOut}
+                    nominatedIds={nominatedIds}
                     handleNominate={handleNominate}
                     key={movie.imdbID}
                     imdbID={movie.imdbID}

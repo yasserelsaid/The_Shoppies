@@ -40,9 +40,17 @@ const styles = {
 };
 const useStyles = makeStyles(styles);
 
-function MovieRow({ title, year, poster, imdbID, handleNominate, maxedOut }) {
+function MovieRow({
+  title,
+  year,
+  poster,
+  imdbID,
+  handleNominate,
+  nominatedIds,
+}) {
   const classes = useStyles();
-  const [isNominated, setIsNominated] = useState(false);
+  const maxedOut = nominatedIds.length >= 5;
+  const [isNominated, setIsNominated] = useState(nominatedIds.includes(imdbID));
   const handleClick = () => {
     if (isNominated || maxedOut) return;
     handleNominate(title, year, poster, imdbID);

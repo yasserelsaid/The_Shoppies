@@ -69,7 +69,7 @@ const useStyles = makeStyles(theme => ({
   },
 }));
 
-export default function Header({ handleNominate, maxedOut }) {
+export default function Header({ handleNominate, nominatedIds }) {
   const classes = useStyles();
   const [searchPopperOpen, setSearchPopperOpen] = useState(false);
   const [anchorEl, setAnchorEl] = useState(null);
@@ -80,7 +80,7 @@ export default function Header({ handleNominate, maxedOut }) {
   const fetchMovies = async name => {
     try {
       setLoading(true);
-      const url = `http://www.omdbapi.com/?s=${name}&apikey=87ad2862`;
+      const url = `http://www.omdbapi.com/?s=${name}&apikey=${process.env.NEXT_PUBLIC_OMDB_API_KEY}`;
       const { data } = await axios.get(url);
       if (data.Error) {
         setError(data.Error);
@@ -106,7 +106,7 @@ export default function Header({ handleNominate, maxedOut }) {
       <Popper
         setSearchPopperOpen={setSearchPopperOpen}
         handleNominate={handleNominate}
-        maxedOut={maxedOut}
+        nominatedIds={nominatedIds}
         movies={movies}
         searchPopperOpen={searchPopperOpen}
         loading={loading}
