@@ -6,8 +6,8 @@ import ProTip from '../src/ProTip';
 import Link from '../src/Link';
 import MuiAlert from '@material-ui/lab/Alert';
 
-import Header from '../layout-components/Header';
-import Footer from '../layout-components/Footer';
+import Header from '../layout-components/header';
+import Footer from '../layout-components/footer';
 import NominatedMovies from '../pages-sections/NominatedMovies';
 import Snackbar from '@material-ui/core/Snackbar';
 
