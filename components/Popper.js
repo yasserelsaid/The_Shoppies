@@ -4,6 +4,7 @@ import Fade from '@material-ui/core/Fade';
 import Paper from '@material-ui/core/Paper';
 import Popper from '@material-ui/core/Popper';
 import MovieRow from '../components/MovieRow';
+import MovieRowSkeleton from '../components/MovieRowSkeleton';
 import CircularProgress from '@material-ui/core/CircularProgress';
 import onClickOutside from 'react-onclickoutside';
 
@@ -42,7 +43,11 @@ function MoviePopper({
             <div className={classes.popperContent}>
               {/* <Typography>The content of the Popper.</Typography> */}
               {loading ? (
-                <CircularProgress />
+                <>
+                  <MovieRowSkeleton />
+                  <MovieRowSkeleton />
+                  <MovieRowSkeleton />
+                </>
               ) : movies.length > 0 ? (
                 movies.map(movie => (
                   <MovieRow
@@ -55,8 +60,10 @@ function MoviePopper({
                     poster={movie.Poster}
                   />
                 ))
+              ) : error ? (
+                <h4>{error}</h4>
               ) : (
-                <p>No</p>
+                <h4>Something Went Wrong</h4>
               )}
             </div>
           </Paper>

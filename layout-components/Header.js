@@ -80,14 +80,18 @@ export default function Header({ handleNominate, nominatedIds }) {
   const fetchMovies = async name => {
     try {
       setLoading(true);
+      setError('');
       const url = `https://www.omdbapi.com/?s=${name}&apikey=${process.env.NEXT_PUBLIC_OMDB_API_KEY}`;
       const { data } = await axios.get(url);
       if (data.Error) {
         setError(data.Error);
+        setLoading(false);
         return;
       }
       setMovies(data.Search);
+      setError('');
     } catch (err) {
+      setError(err);
       console.log(err);
     } finally {
       setLoading(false);

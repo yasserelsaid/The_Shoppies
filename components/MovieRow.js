@@ -10,7 +10,7 @@ const styles = {
     justifyContent: 'space-between',
     alignItems: 'center',
   },
-  imgAndName: {
+  imgAndTitle: {
     display: 'flex',
   },
   imgContainer: {
@@ -59,7 +59,7 @@ function MovieRow({
 
   return (
     <div className={classes.movieRow}>
-      <div className={classes.imgAndName}>
+      <div className={classes.imgAndTitle}>
         <div className={classes.imgContainer}>
           {poster && poster !== 'N/A' && (
             <Image
