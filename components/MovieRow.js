@@ -1,3 +1,4 @@
+import React, { useState } from 'react';
 import Image from 'next/image';
 import { makeStyles } from '@material-ui/core/styles';
 import { Button } from '@material-ui/core';
@@ -19,10 +20,10 @@ const styles = {
     display: 'block',
     display: 'inline-block',
     '& img': {
-      width: '100%',
+      // width: '100%',
       borderRadius: '5px',
     },
-    marginBottom: '5px',
+    margin: '5px 0',
   },
   nameAndYear: {
     display: 'flex',
@@ -39,28 +40,43 @@ const styles = {
 };
 const useStyles = makeStyles(styles);
 
-function MovieCard() {
+function MovieRow({ title, year, poster, imdbID, handleNominate, maxedOut }) {
   const classes = useStyles();
+  const [isNominated, setIsNominated] = useState(false);
+  const handleClick = () => {
+    if (isNominated || maxedOut) return;
+    handleNominate(title, year, poster, imdbID);
+    setIsNominated(true);
+  };
 
   return (
     <div className={classes.movieRow}>
       <div className={classes.imgAndName}>
         <div className={classes.imgContainer}>
-          <Image
-            src='https://images-na.ssl-images-amazon.com/images/I/814V1XJaoAL._SL1500_.jpg'
-            alt='Mission Impossible Poster'
-            width={290}
-            height={375}
-            className={classes.img}
-          />
+          {poster && poster !== 'N/A' && (
+            <Image
+              src={poster}
+              alt='Mission Impossible Poster'
+              width={300}
+              height={500}
+              className={classes.img}
+            />
+          )}
         </div>
         <span className={classes.nameAndYear}>
-          <div>Mission Impossible</div>
-          <div>2012</div>
+          <div>{title}</div>
+          <div>{year}</div>
         </span>
       </div>
       <div>
-        <Button fullWidth size='small' variant='contained' color='secondary'>
+        <Button
+          onClick={handleClick}
+          fullWidth
+          size='small'
+          variant='contained'
+          color='secondary'
+          disabled={isNominated || maxedOut}
+        >
           Nominate
         </Button>
       </div>
@@ -68,4 +84,4 @@ function MovieCard() {
   );
 }
 
-export default MovieCard;
+export default MovieRow;

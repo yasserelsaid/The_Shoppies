@@ -14,7 +14,7 @@ const styles = {
 };
 const useStyles = makeStyles(styles);
 
-function NominatedMovies() {
+function NominatedMovies({ nominatedMovies, handleRemove }) {
   const classes = useStyles();
   return (
     <>
@@ -28,23 +28,30 @@ function NominatedMovies() {
       </Typography>
 
       <div className={classes.container}>
-        <Grid container spacing={3}>
-          <Grid item md>
-            <MovieCard />
+        {nominatedMovies.length > 0 ? (
+          <Grid container spacing={2}>
+            {nominatedMovies.map(movie => (
+              <Grid item md key={movie.imdbID}>
+                <MovieCard
+                  handleRemove={handleRemove}
+                  imdbID={movie.imdbID}
+                  title={movie.title}
+                  year={movie.year}
+                  poster={movie.poster}
+                />
+              </Grid>
+            ))}
           </Grid>
-          <Grid item md>
-            <MovieCard />
-          </Grid>
-          <Grid item md>
-            <MovieCard />
-          </Grid>
-          <Grid item md>
-            <MovieCard />
-          </Grid>
-          <Grid item md>
-            <MovieCard />
-          </Grid>
-        </Grid>
+        ) : (
+          <Typography
+            variant='h4'
+            align='center'
+            color='textSecondary'
+            component='p'
+          >
+            You Haven't Nominated Any Movies Yet
+          </Typography>
+        )}
       </div>
     </>
   );

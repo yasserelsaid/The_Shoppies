@@ -12,6 +12,10 @@ const useStyles = makeStyles(theme => ({
     // marginTop: theme.spacing(8),
     padding: theme.spacing(6, 0),
   },
+  link: {
+    color: theme.palette.secondary.main,
+    textDecoration: 'none',
+  },
 }));
 
 export default function Footer() {
@@ -27,18 +31,28 @@ export default function Footer() {
           variant='subtitle1'
           align='center'
           color='textSecondary'
-          component='p'
+          component='h1'
         >
           <div>
             View project on{' '}
-            <a href='https://github.com/yasserelsaid' target='_blank'>
+            <a
+              className={classes.link}
+              href='https://github.com/yasserelsaid'
+              target='_blank'
+            >
               Github
             </a>
           </div>
-          Made with <FavoriteIcon fontSize='small' /> by{' '}
-          <a href='https://www.yasserelsaid.com/' target='_blank'>
-            Yasser Elsaid
-          </a>{' '}
+          <div>
+            Made with <FavoriteIcon fontSize='small' /> by{' '}
+            <a
+              className={classes.link}
+              href='https://www.yasserelsaid.com/'
+              target='_blank'
+            >
+              Yasser Elsaid
+            </a>{' '}
+          </div>
         </Typography>
       </Container>
     </footer>

@@ -5,10 +5,9 @@ import Typography from '@material-ui/core/Typography';
 import InputBase from '@material-ui/core/InputBase';
 import { fade, makeStyles } from '@material-ui/core/styles';
 import SearchIcon from '@material-ui/icons/Search';
-import Fade from '@material-ui/core/Fade';
-import Paper from '@material-ui/core/Paper';
-import Popper from '@material-ui/core/Popper';
-import MovieRow from '../components/MovieRow';
+import axios from 'axios';
+import Popper from '../components/Popper';
+
 const useStyles = makeStyles(theme => ({
   root: {
     flexGrow: 1,
@@ -70,41 +69,50 @@ const useStyles = makeStyles(theme => ({
   },
 }));
 
-export default function SearchAppBar() {
+export default function Header({ handleNominate, maxedOut }) {
   const classes = useStyles();
   const [searchPopperOpen, setSearchPopperOpen] = useState(false);
   const [anchorEl, setAnchorEl] = useState(null);
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState(false);
+  const [movies, setMovies] = useState([]);
+
+  const fetchMovies = async name => {
+    try {
+      setLoading(true);
+      const url = `http://www.omdbapi.com/?s=${name}&apikey=87ad2862`;
+      const { data } = await axios.get(url);
+      if (data.Error) {
+        setError(data.Error);
+        return;
+      }
+      setMovies(data.Search);
+    } catch (err) {
+      console.log(err);
+    } finally {
+      setLoading(false);
+    }
+  };
 
   const handleChange = e => {
+    const name = e.target.value;
     setAnchorEl(e.currentTarget);
-    setSearchPopperOpen(Boolean(e.target.value));
+    setSearchPopperOpen(Boolean(name));
+    fetchMovies(name);
   };
 
   return (
     <div className={classes.root}>
       <Popper
-        open={searchPopperOpen}
+        setSearchPopperOpen={setSearchPopperOpen}
+        handleNominate={handleNominate}
+        maxedOut={maxedOut}
+        movies={movies}
+        searchPopperOpen={searchPopperOpen}
+        loading={loading}
+        error={error}
         anchorEl={anchorEl}
-        placement='bottom-end'
-        transition
-      >
-        {({ TransitionProps }) => (
-          <Fade {...TransitionProps} timeout={350}>
-            <Paper>
-              <div className={classes.popperContent}>
-                {/* <Typography>The content of the Popper.</Typography> */}
-                <MovieRow />
-                <MovieRow />
-                <MovieRow />
-                <MovieRow />
-                <MovieRow />
-                <MovieRow />
-                <MovieRow />
-              </div>
-            </Paper>
-          </Fade>
-        )}
-      </Popper>
+      />
       <AppBar color='inherit' position='static'>
         <Toolbar>
           <Typography className={classes.title} variant='h6' noWrap>
