@@ -11,7 +11,7 @@ export default function Index() {
     <Container maxWidth='lg'>
       <Box my={4}>
         <Typography variant='h4' component='h1' gutterBottom align='center'>
-          Nominate Your Favorite Movies
+          Nominate Your Favourite Movies
         </Typography>
         <ProTip />
         <NominatedMovies />

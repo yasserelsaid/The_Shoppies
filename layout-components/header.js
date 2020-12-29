@@ -1,13 +1,14 @@
-import React from 'react';
+import React, { useState } from 'react';
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
-import IconButton from '@material-ui/core/IconButton';
 import Typography from '@material-ui/core/Typography';
 import InputBase from '@material-ui/core/InputBase';
 import { fade, makeStyles } from '@material-ui/core/styles';
-import MenuIcon from '@material-ui/icons/Menu';
 import SearchIcon from '@material-ui/icons/Search';
-
+import Fade from '@material-ui/core/Fade';
+import Paper from '@material-ui/core/Paper';
+import Popper from '@material-ui/core/Popper';
+import MovieRow from '../components/MovieRow';
 const useStyles = makeStyles(theme => ({
   root: {
     flexGrow: 1,
@@ -61,13 +62,49 @@ const useStyles = makeStyles(theme => ({
       },
     },
   },
+  popperContent: {
+    padding: '10px',
+    width: '380px',
+    maxHeight: '500px',
+    overflow: 'auto',
+  },
 }));
 
 export default function SearchAppBar() {
   const classes = useStyles();
+  const [searchPopperOpen, setSearchPopperOpen] = useState(false);
+  const [anchorEl, setAnchorEl] = useState(null);
+
+  const handleChange = e => {
+    setAnchorEl(e.currentTarget);
+    setSearchPopperOpen(Boolean(e.target.value));
+  };
 
   return (
     <div className={classes.root}>
+      <Popper
+        open={searchPopperOpen}
+        anchorEl={anchorEl}
+        placement='bottom-end'
+        transition
+      >
+        {({ TransitionProps }) => (
+          <Fade {...TransitionProps} timeout={350}>
+            <Paper>
+              <div className={classes.popperContent}>
+                {/* <Typography>The content of the Popper.</Typography> */}
+                <MovieRow />
+                <MovieRow />
+                <MovieRow />
+                <MovieRow />
+                <MovieRow />
+                <MovieRow />
+                <MovieRow />
+              </div>
+            </Paper>
+          </Fade>
+        )}
+      </Popper>
       <AppBar color='inherit' position='static'>
         <Toolbar>
           <Typography className={classes.title} variant='h6' noWrap>
@@ -84,6 +121,7 @@ export default function SearchAppBar() {
                 input: classes.inputInput,
               }}
               inputProps={{ 'aria-label': 'search' }}
+              onChange={handleChange}
             />
           </div>
         </Toolbar>
