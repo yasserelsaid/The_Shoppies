@@ -20,7 +20,7 @@ export default function Index() {
 
   useEffect(() => {
     const savedMovies = JSON.parse(localStorage.getItem('movies'));
-    setNominatedMovies(savedMovies);
+    if (savedMovies) setNominatedMovies(savedMovies);
   }, []);
 
   useEffect(() => {

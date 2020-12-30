@@ -7,7 +7,6 @@ import Typography from '@material-ui/core/Typography';
 
 const styles = {
   container: {
-    position: 'relative',
     marginTop: '50px',
     backgroundColor: '#222',
     borderRadius: '10px',
