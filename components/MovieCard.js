@@ -1,5 +1,6 @@
 import React from 'react';
 import Image from 'next/image';
+import ImagePlaceholder from './ImagePlaceholder';
 import { makeStyles } from '@material-ui/core/styles';
 import { Button } from '@material-ui/core';
 
@@ -19,6 +20,7 @@ const styles = {
     display: 'flex',
     flexDirection: 'column',
     alignItems: 'center',
+    height: '100%',
   },
   img: {
     borderRadius: '6px ',
@@ -40,7 +42,7 @@ function MovieCard({ title, year, poster, imdbID, handleRemove }) {
     <div className={classes.container}>
       <div className={classes.card}>
         <div className={classes.imgAndTitle}>
-          {poster && poster !== 'N/A' && (
+          {poster && poster !== 'N/A' ? (
             <Image
               className={classes.img}
               width={290}
@@ -48,6 +50,8 @@ function MovieCard({ title, year, poster, imdbID, handleRemove }) {
               src={poster}
               alt='Mission Impossible Poster'
             />
+          ) : (
+            <ImagePlaceholder />
           )}
           <p>
             {title} ({year})

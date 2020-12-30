@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import Image from 'next/image';
+import ImagePlaceholder from './ImagePlaceholder';
 import { makeStyles } from '@material-ui/core/styles';
 import { Button } from '@material-ui/core';
 
@@ -61,7 +62,7 @@ function MovieRow({
     <div className={classes.movieRow}>
       <div className={classes.imgAndTitle}>
         <div className={classes.imgContainer}>
-          {poster && poster !== 'N/A' && (
+          {poster && poster !== 'N/A' ? (
             <Image
               src={poster}
               alt='Mission Impossible Poster'
@@ -69,6 +70,8 @@ function MovieRow({
               height={500}
               className={classes.img}
             />
+          ) : (
+            <ImagePlaceholder />
           )}
         </div>
         <span className={classes.nameAndYear}>
