@@ -19,7 +19,13 @@ export default function Index() {
   const [bannerOpen, setBannerOpen] = useState(false);
 
   useEffect(() => {
+    const savedMovies = JSON.parse(localStorage.getItem('movies'));
+    setNominatedMovies(savedMovies);
+  }, []);
+
+  useEffect(() => {
     setBannerOpen(nominatedMovies.length === 5);
+    localStorage.setItem('movies', JSON.stringify(nominatedMovies));
   }, [nominatedMovies]);
 
   const handleNominate = (title, year, poster, imdbID) => {

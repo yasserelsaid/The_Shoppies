@@ -11,7 +11,7 @@ import onClickOutside from 'react-onclickoutside';
 const useStyles = makeStyles(theme => ({
   popperContent: {
     padding: '10px',
-    width: '380px',
+    width: '350px',
     maxHeight: '500px',
     overflow: 'auto',
   },
