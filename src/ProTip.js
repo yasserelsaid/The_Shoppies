@@ -26,7 +26,7 @@ export default function ProTip() {
   return (
     <Typography className={classes.root} color='textSecondary'>
       <LightBulbIcon className={classes.lightBulb} />
-      Pro tip:
+      {/* Pro tip: */} Nominate 5 of your favourite movies
     </Typography>
   );
 }

@@ -51,7 +51,7 @@ export default function Index() {
             Nominate Your Favourite Movies
           </Typography>
           <Box my={8}>
-            {/* <ProTip /> */}
+            <ProTip />
             <NominatedMovies
               nominatedMovies={nominatedMovies}
               handleRemove={handleRemove}
