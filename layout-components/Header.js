@@ -7,6 +7,7 @@ import { fade, makeStyles } from '@material-ui/core/styles';
 import SearchIcon from '@material-ui/icons/Search';
 import axios from 'axios';
 import Popper from '../components/Popper';
+import Image from 'next/image';
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -67,6 +68,9 @@ const useStyles = makeStyles(theme => ({
     maxHeight: '500px',
     overflow: 'auto',
   },
+  imgContainer: {
+    padding: '5px 10px',
+  },
 }));
 
 export default function Header({ handleNominate, nominatedIds }) {
@@ -91,8 +95,7 @@ export default function Header({ handleNominate, nominatedIds }) {
       setMovies(data.Search);
       setError('');
     } catch (err) {
-      setError(err);
-      console.log(err);
+      setError('Something went wrong');
     } finally {
       setLoading(false);
     }
@@ -119,6 +122,14 @@ export default function Header({ handleNominate, nominatedIds }) {
       />
       <AppBar color='inherit' position='static'>
         <Toolbar>
+          <div className={classes.imgContainer}>
+            <Image
+              width={60}
+              height={80}
+              src='/images/shoppies.png'
+              alt='Shoppies Logo'
+            />
+          </div>
           <Typography className={classes.title} variant='h6' noWrap>
             The Shoppies
           </Typography>
