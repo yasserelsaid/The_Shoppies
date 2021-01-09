@@ -5,17 +5,21 @@ import Paper from '@material-ui/core/Paper';
 import Popper from '@material-ui/core/Popper';
 import MovieRow from '../components/MovieRow';
 import MovieRowSkeleton from '../components/MovieRowSkeleton';
-import CircularProgress from '@material-ui/core/CircularProgress';
 import onClickOutside from 'react-onclickoutside';
 
 const useStyles = makeStyles(theme => ({
   popperContent: {
-    marginTop: '15px',
+    marginTop: '10px',
     padding: '10px',
     width: '350px',
     maxHeight: '500px',
     overflow: 'auto',
     boxShadow: 'rgba(0, 0, 0, 0.44) 0px 3px 8px',
+  },
+  '@media (max-width: 850px)': {
+    popperContent: {
+      maxHeight: '280px',
+    },
   },
 }));
 function MoviePopper({

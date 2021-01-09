@@ -62,12 +62,7 @@ const useStyles = makeStyles(theme => ({
       },
     },
   },
-  popperContent: {
-    padding: '10px',
-    width: '380px',
-    maxHeight: '500px',
-    overflow: 'auto',
-  },
+
   imgContainer: {
     padding: '5px 10px',
   },
