@@ -10,13 +10,14 @@ import onClickOutside from 'react-onclickoutside';
 
 const useStyles = makeStyles(theme => ({
   popperContent: {
+    marginTop: '15px',
     padding: '10px',
     width: '350px',
     maxHeight: '500px',
     overflow: 'auto',
+    boxShadow: 'rgba(0, 0, 0, 0.44) 0px 3px 8px',
   },
 }));
-
 function MoviePopper({
   movies,
   searchPopperOpen,
