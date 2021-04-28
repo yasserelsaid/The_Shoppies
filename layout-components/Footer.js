@@ -43,7 +43,7 @@ export default function Footer() {
               Github
             </a>
           </div>
-          <div>
+          {/* <div>
             Made with <FavoriteIcon fontSize='small' /> by{' '}
             <a
               className={classes.link}
@@ -52,7 +52,7 @@ export default function Footer() {
             >
               Yasser Elsaid
             </a>{' '}
-          </div>
+          </div> */}
         </Typography>
       </Container>
     </footer>
