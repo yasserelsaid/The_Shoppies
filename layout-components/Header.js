@@ -83,9 +83,16 @@ export default function Header({ handleNominate, nominatedIds }) {
     try {
       setLoading(true);
       setError('');
-      const url = `https://www.omdbapi.com/?s=${name}&apikey=${process.env.NEXT_PUBLIC_OMDB_API_KEY}`;
-      const { data } = await axios.get(url);
-      if (data.Error) {
+      const queryParameter = {
+        apiKey: process.env.NEXT_PUBLIC_OMDB_API_KEY,
+        s: name,
+        type: 'movie',
+      };
+      const url = 'https://www.omdbapi.com/';
+      const { data } = await axios.get(url, {
+        params: queryParameter,
+      });
+      if (data.Response !== 'True' || data.Error) {
         setError(data.Error);
         setLoading(false);
         return;
@@ -102,7 +109,11 @@ export default function Header({ handleNominate, nominatedIds }) {
   const handleChange = e => {
     const name = e.target.value;
     setAnchorEl(e.currentTarget);
+    if (!Boolean(name)) {
+      setMovies([]);
+    }
     setSearchPopperOpen(Boolean(name));
+
     fetchMovies(name);
   };
 
