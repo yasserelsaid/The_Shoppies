@@ -48,7 +48,7 @@ function MovieCard({ title, year, poster, imdbID, handleRemove }) {
               width={290}
               height={375}
               src={poster}
-              alt='Mission Impossible Poster'
+              alt={`${title} poster`}
             />
           ) : (
             <ImagePlaceholder />

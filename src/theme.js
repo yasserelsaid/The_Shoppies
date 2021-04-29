@@ -1,13 +1,25 @@
 import { createMuiTheme } from '@material-ui/core/styles';
-import { red } from '@material-ui/core/colors';
 
 // Create a theme instance.
 const theme = createMuiTheme({
   palette: {
     type: 'dark',
     primary: {
-      main: '#fff',
+      main: '#0D1117',
+      light: '#161B22',
     },
+  },
+  typography: {
+    fontFamily: [
+      'trebuchet MS',
+      'Roboto',
+      '"Helvetica Neue"',
+      'Arial',
+      'sans-serif',
+      '"Apple Color Emoji"',
+      '"Segoe UI Emoji"',
+      '"Segoe UI Symbol"',
+    ].join(','),
   },
 });
 

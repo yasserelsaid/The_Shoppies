@@ -66,6 +66,9 @@ const useStyles = makeStyles(theme => ({
   imgContainer: {
     padding: '5px 10px',
   },
+  appBar: {
+    backgroundColor: theme.palette.primary.light,
+  },
 }));
 
 export default function Header({ handleNominate, nominatedIds }) {
@@ -87,6 +90,7 @@ export default function Header({ handleNominate, nominatedIds }) {
         setLoading(false);
         return;
       }
+      console.log(data.Search);
       setMovies(data.Search);
       setError('');
     } catch (err) {
@@ -115,7 +119,7 @@ export default function Header({ handleNominate, nominatedIds }) {
         error={error}
         anchorEl={anchorEl}
       />
-      <AppBar color='inherit' position='static'>
+      <AppBar className={classes.appBar} position='static'>
         <Toolbar>
           <div className={classes.imgContainer}>
             <Image

@@ -15,6 +15,7 @@ const useStyles = makeStyles(theme => ({
     maxHeight: '500px',
     overflow: 'auto',
     boxShadow: 'rgba(0, 0, 0, 0.44) 0px 3px 8px',
+    backgroundColor: theme.palette.primary.light,
   },
   '@media (max-width: 850px)': {
     popperContent: {

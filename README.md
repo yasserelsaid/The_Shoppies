@@ -6,7 +6,7 @@ Movie nomination UI for the upcoming shoppies
 
 Created using React, Next.js and Material-UI
 
-![Alt text](public/images/The_Shoppies_screenshot.png?raw=true 'Title')
+![Alt text](public/images/widescreen_screenshot.png?raw=true 'Title')
 
 ## Available Scripts
 

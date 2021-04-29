@@ -5,10 +5,10 @@ import Grid from '@material-ui/core/Grid';
 import { makeStyles } from '@material-ui/core/styles';
 import Typography from '@material-ui/core/Typography';
 
-const styles = {
+const useStyles = makeStyles(theme => ({
   container: {
     marginTop: '50px',
-    backgroundColor: '#222',
+    backgroundColor: theme.palette.primary.light,
     borderRadius: '10px',
     padding: '20px',
   },
@@ -18,8 +18,7 @@ const styles = {
     justifyContent: 'center',
     height: '350px',
   },
-};
-const useStyles = makeStyles(styles);
+}));
 
 function NominatedMovies({ nominatedMovies, handleRemove }) {
   const numberOfPlaceholders = 5 - nominatedMovies.length;

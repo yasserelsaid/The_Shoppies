@@ -10,11 +10,20 @@ import Header from '../layout-components/Header';
 import Footer from '../layout-components/Footer';
 import NominatedMovies from '../pages-sections/NominatedMovies';
 import Snackbar from '@material-ui/core/Snackbar';
+import { makeStyles } from '@material-ui/core/styles';
+
+const useStyles = makeStyles(theme => ({
+  body: {
+    backgroundColor: theme.palette.primary.main,
+    minHeight: '100vh',
+  },
+}));
 
 function Alert(props) {
   return <MuiAlert elevation={6} variant='filled' {...props} />;
 }
 export default function Index() {
+  const classes = useStyles();
   const [nominatedMovies, setNominatedMovies] = useState([]);
   const [bannerOpen, setBannerOpen] = useState(false);
 
@@ -41,26 +50,27 @@ export default function Index() {
   };
   return (
     <>
-      <Header
-        handleNominate={handleNominate}
-        nominatedIds={nominatedMovies.map(movie => movie.imdbID)}
-      />
-      <Container maxWidth='lg'>
-        <Box my={4}>
-          <Typography variant='h4' component='h1' gutterBottom align='center'>
-            Nominate Your Favourite Movies
-          </Typography>
-          <Box my={8}>
-            <ProTip />
-            <NominatedMovies
-              nominatedMovies={nominatedMovies}
-              handleRemove={handleRemove}
-            />
+      <div className={classes.body}>
+        <Header
+          handleNominate={handleNominate}
+          nominatedIds={nominatedMovies.map(movie => movie.imdbID)}
+        />
+        <Container maxWidth='lg'>
+          <Box my={4}>
+            <Typography variant='h4' component='h1' gutterBottom align='center'>
+              Nominate Your Favourite Movies
+            </Typography>
+            <Box my={8}>
+              <ProTip />
+              <NominatedMovies
+                nominatedMovies={nominatedMovies}
+                handleRemove={handleRemove}
+              />
+            </Box>
           </Box>
-        </Box>
-      </Container>
-
-      <Footer />
+        </Container>
+        <Footer />
+      </div>
       <Snackbar
         open={bannerOpen}
         autoHideDuration={4000}

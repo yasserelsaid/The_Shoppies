@@ -4,7 +4,7 @@ import ImagePlaceholder from './ImagePlaceholder';
 import { makeStyles } from '@material-ui/core/styles';
 import { Button } from '@material-ui/core';
 
-const styles = {
+const useStyles = makeStyles(theme => ({
   movieRow: {
     display: 'flex',
     borderBottom: '1px solid #666',
@@ -34,12 +34,7 @@ const styles = {
     fontSize: '16px',
     marginLeft: '10px',
   },
-  movieName: {
-    fontSize: '18px',
-    color: '#000000',
-  },
-};
-const useStyles = makeStyles(styles);
+}));
 
 function MovieRow({
   title,

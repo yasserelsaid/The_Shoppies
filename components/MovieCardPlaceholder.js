@@ -2,20 +2,19 @@ import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import Typography from '@material-ui/core/Typography';
 
-const styles = {
+const useStyles = makeStyles(theme => ({
   container: {
     height: '100%',
     width: '100%',
     borderRadius: '5px',
-    backgroundColor: '#333',
+    backgroundColor: theme.palette.primary.main,
     padding: '40px',
     minHeight: '350px',
     display: 'flex',
     justifyContent: 'center',
     alignItems: 'center',
   },
-};
-const useStyles = makeStyles(styles);
+}));
 
 function MovieCardPlaceholder() {
   const classes = useStyles();
