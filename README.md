@@ -6,8 +6,13 @@ Movie nomination UI for the upcoming shoppies
 
 Created using React, Next.js and Material-UI
 
-![Widescreen Screenshot](public/images/widescreen_screenshot.png?raw=true 'Title')
-<img src="public/images/iphone_screenshot.png" alt="iPhone x Screenshot" width="220"/>
+## Widescreen Screenshot
+
+<img src="public/images/widescreen_screenshot.png" alt="Widescreen Screenshot" />
+
+## iPhone x Screenshot
+
+<img src="public/images/iphone_screenshot.png" alt="iPhone x Screenshot" width="260"/>
 
 ## Available Scripts
 
