@@ -109,12 +109,12 @@ export default function Header({ handleNominate, nominatedIds }) {
   const handleChange = e => {
     const name = e.target.value;
     setAnchorEl(e.currentTarget);
-    if (!Boolean(name)) {
+    if (Boolean(name)) {
+      fetchMovies(name);
+    } else {
       setMovies([]);
     }
     setSearchPopperOpen(Boolean(name));
-
-    fetchMovies(name);
   };
 
   return (
@@ -152,7 +152,7 @@ export default function Header({ handleNominate, nominatedIds }) {
                 root: classes.inputRoot,
                 input: classes.inputInput,
               }}
-              inputProps={{ 'aria-label': 'search' }}
+              inputProps={{ 'aria-label': 'search', onFocus: handleChange }}
               onChange={handleChange}
             />
           </div>
