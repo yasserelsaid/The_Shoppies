@@ -90,7 +90,6 @@ export default function Header({ handleNominate, nominatedIds }) {
         setLoading(false);
         return;
       }
-      console.log(data.Search);
       setMovies(data.Search);
       setError('');
     } catch (err) {
