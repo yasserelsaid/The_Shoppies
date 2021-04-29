@@ -1,5 +1,25 @@
 # The Shoppies
 
-## Movie awards for entrepreneurs
+https://the-shoppies-gamma.vercel.app/
 
-This is need a webpage that can search OMDB for movies, and allow the user to save their favourite films they feel should be up for nomination.
+Movie nomination UI for the upcoming shoppies
+
+Created using React, Next.js and Material-UI
+
+![Alt text](public/images/The_Shoppies_screenshot.png?raw=true 'Title')
+
+## Available Scripts
+
+In the project directory, you can run:
+
+### `npm run dev`
+
+Runs the app in the development mode.\
+Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+
+The page will reload if you make edits.
+
+### `npm run build`
+
+Builds the app for production.\
+It correctly bundles React in production mode and optimizes the build for the best performance.
