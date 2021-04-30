@@ -22,7 +22,7 @@ const useStyles = makeStyles(theme => ({
 function Alert(props) {
   return <MuiAlert elevation={6} variant='filled' {...props} />;
 }
-export default function Index() {
+export default function Index({ setIsDarkTheme }) {
   const classes = useStyles();
   const [nominatedMovies, setNominatedMovies] = useState([]);
   const [bannerOpen, setBannerOpen] = useState(false);
@@ -52,13 +52,14 @@ export default function Index() {
     <>
       <div className={classes.body}>
         <Header
+          setIsDarkTheme={setIsDarkTheme}
           handleNominate={handleNominate}
           nominatedIds={nominatedMovies.map(movie => movie.imdbID)}
         />
         <Container maxWidth='lg'>
           <Box my={4}>
             <Typography variant='h4' component='h1' gutterBottom align='center'>
-              Nominate Your Favourite Movies
+              Movie Awards for Entrepreneurs
             </Typography>
             <Box my={8}>
               <ProTip />

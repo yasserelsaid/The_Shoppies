@@ -1,7 +1,6 @@
 import React from 'react';
 import Document, { Html, Head, Main, NextScript } from 'next/document';
 import { ServerStyleSheets } from '@material-ui/core/styles';
-import theme from '../src/theme';
 import { GA_TRACKING_ID } from '../lib/gtag';
 
 export default class MyDocument extends Document {
@@ -11,7 +10,6 @@ export default class MyDocument extends Document {
         <Head>
           {/* PWA primary color */}
           <link rel='icon' type='image/x-icon' href='/images/favicon.ico' />
-          <meta name='theme-color' content={theme.palette.primary.main} />
           <link
             rel='stylesheet'
             href='https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap'

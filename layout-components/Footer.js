@@ -27,12 +27,7 @@ export default function Footer() {
         {/* <Typography variant='h6' align='center' gutterBottom>
           {title}
         </Typography> */}
-        <Typography
-          variant='subtitle1'
-          align='center'
-          color='textSecondary'
-          component='h1'
-        >
+        <Typography variant='subtitle1' align='center' component='h1'>
           <div>
             View project on{' '}
             <a

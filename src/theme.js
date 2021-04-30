@@ -1,7 +1,7 @@
 import { createMuiTheme } from '@material-ui/core/styles';
 
 // Create a theme instance.
-const theme = createMuiTheme({
+export const darkTheme = createMuiTheme({
   palette: {
     type: 'dark',
     primary: {
@@ -22,5 +22,23 @@ const theme = createMuiTheme({
     ].join(','),
   },
 });
-
-export default theme;
+export const lightTheme = createMuiTheme({
+  palette: {
+    primary: {
+      main: '#fbfbfb',
+      light: '#fff',
+    },
+  },
+  typography: {
+    fontFamily: [
+      'trebuchet MS',
+      'Roboto',
+      '"Helvetica Neue"',
+      'Arial',
+      'sans-serif',
+      '"Apple Color Emoji"',
+      '"Segoe UI Emoji"',
+      '"Segoe UI Symbol"',
+    ].join(','),
+  },
+});

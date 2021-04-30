@@ -11,6 +11,7 @@ const useStyles = makeStyles(theme => ({
     backgroundColor: theme.palette.primary.light,
     borderRadius: '10px',
     padding: '20px',
+    border: '1px solid #888',
   },
   noNominations: {
     display: 'flex',
@@ -26,12 +27,7 @@ function NominatedMovies({ nominatedMovies, handleRemove }) {
   const classes = useStyles();
   return (
     <>
-      <Typography
-        variant='h4'
-        align='center'
-        color='textSecondary'
-        component='p'
-      >
+      <Typography variant='h4' align='center' component='p'>
         Your Nominations
       </Typography>
 

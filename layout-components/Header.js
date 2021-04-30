@@ -5,6 +5,8 @@ import Typography from '@material-ui/core/Typography';
 import InputBase from '@material-ui/core/InputBase';
 import { fade, makeStyles } from '@material-ui/core/styles';
 import SearchIcon from '@material-ui/icons/Search';
+import IconButton from '@material-ui/core/IconButton';
+import InvertColorsIcon from '@material-ui/icons/InvertColors';
 import axios from 'axios';
 import Popper from '../components/Popper';
 import Image from 'next/image';
@@ -36,6 +38,7 @@ const useStyles = makeStyles(theme => ({
       marginLeft: theme.spacing(1),
       width: 'auto',
     },
+    border: '1px solid #888',
   },
   searchIcon: {
     padding: theme.spacing(0, 2),
@@ -64,14 +67,22 @@ const useStyles = makeStyles(theme => ({
   },
 
   imgContainer: {
-    padding: '5px 10px',
+    padding: '5px 12px',
   },
   appBar: {
     backgroundColor: theme.palette.primary.light,
   },
+  invertColorsIconContainer: {
+    width: '60px',
+    padding: '5px 10px',
+  },
 }));
 
-export default function Header({ handleNominate, nominatedIds }) {
+export default function Header({
+  handleNominate,
+  nominatedIds,
+  setIsDarkTheme,
+}) {
   const classes = useStyles();
   const [searchPopperOpen, setSearchPopperOpen] = useState(false);
   const [anchorEl, setAnchorEl] = useState(null);
@@ -97,7 +108,6 @@ export default function Header({ handleNominate, nominatedIds }) {
         setLoading(false);
         return;
       }
-      console.log(data.Search);
       setMovies(data.Search);
       setError('');
     } catch (err) {
@@ -157,6 +167,12 @@ export default function Header({ handleNominate, nominatedIds }) {
               onChange={handleChange}
             />
           </div>
+          <IconButton
+            onClick={() => setIsDarkTheme(prevState => !prevState)}
+            aria-label='Toggle Theme'
+          >
+            <InvertColorsIcon />
+          </IconButton>
         </Toolbar>
       </AppBar>
     </div>
