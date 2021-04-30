@@ -59,7 +59,7 @@ function MovieRow({
           {poster && poster !== 'N/A' ? (
             <Image
               src={poster}
-              alt='Mission Impossible Poster'
+              alt={`${title} Poster`}
               width={300}
               height={500}
               className={classes.img}
