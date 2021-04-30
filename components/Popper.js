@@ -59,7 +59,7 @@ function MoviePopper({
                   <MovieRow
                     nominatedIds={nominatedIds}
                     handleNominate={handleNominate}
-                    key={movie.imdbID}
+                    key={movie.imdbID + Math.random()}
                     imdbID={movie.imdbID}
                     title={movie.Title}
                     year={movie.Year}
